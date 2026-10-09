@@ -4,7 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ody-scaffold</title>
+    <meta name="description" content="Odylytics is an AI startup building digital solutions for safer, smarter communities." />
+    <meta name="theme-color" content="#0B0A0E" />
+    <script>
+      try {
+        if (localStorage.getItem('odylytics-theme') === 'light') {
+          document.documentElement.dataset.theme = 'light'
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FAFAFB')
+        }
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Odylytics — Engineering Safer Communities</title>
   </head>
   <body>
     <div id="root"></div>

@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | 0 | Navigation | — | Dark | Wordmark + menu + contact |
 | 1 | Hero | `#home` | Dark | AI startup positioning + Odylytics logo |
-| 2 | Core Digital Solutions | `#solutions` | Light | 7 solutions in a logo loop |
+| 2 | Core Digital Solutions | `#solutions` | Light | 6 solutions in a logo loop |
 | 3 | Featured Solutions | `#featured` | Dark | 2 flagship solutions, deep dive |
 | 4 | Awards & Certifications | `#recognition` | Light | Recognition for the 2 flagship solutions |
 | 5 | Partnerships | `#partners` | Dark | 6 partner logos + short descriptions |
@@ -53,10 +53,10 @@ Sections 3 and 4 run back to back as one "proof" block: *what we built → who r
 
 ## 2. Core Digital Solutions
 
-**Goal:** Show breadth — 7 solutions at a glance.
+**Goal:** Show breadth — 6 solutions at a glance.
 
 - **Eyebrow:** `■ CORE DIGITAL SOLUTIONS`
-- **Headline:** *Seven solutions. One intelligence layer.*
+- **Headline:** *Six solutions. One intelligence layer.*
 - **Intro (1 sentence):** *Each Odylytics solution shares the same AI core — built once, adapted to every domain we serve.* [TBD]
 - **Presentation:** horizontal logo loop (infinite marquee, pause on hover). Each item = logo/icon + name. Hover/click reveals a one-line description.
 
@@ -180,7 +180,7 @@ Aim for a mix: 1 government/institution, 1 partner, 1 end-user/community, 1 expe
 - **Sub-copy:** *Partnerships, pilots or press — we'd love to hear from you.*
 - **Form fields:** Name · Email · Organisation · Message → `SEND MESSAGE →`
 - **Footer columns:**
-  - Solutions (7 links)
+  - Solutions (6 links)
   - Company: About · Recognition · Partners · Team
   - Contact: `A` address · `P` phone · `E` email [TBD]
   - Social: `LINKEDIN / FACEBOOK / …` [TBD]
@@ -191,7 +191,7 @@ Aim for a mix: 1 government/institution, 1 partner, 1 end-user/community, 1 expe
 ## Documents needed
 
 1. Hero positioning: one sentence on what Odylytics provides and to whom
-2. 7 solutions: names, logos, one-liners (and confirm which 2 are flagships)
+2. 6 solutions: names, logos, one-liners (and confirm which 2 are flagships)
 3. Flagship details: features, verified metrics, visuals
 4. Awards & certificates: title, issuer, year, image
 5. 6 partners: logos + what each partnership covers
