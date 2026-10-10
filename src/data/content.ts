@@ -347,24 +347,24 @@ export const TEAM_HEADING = {
 export const TEAM: TeamMember[] = [
   {
     name: 'Quân',
-    role: 'Product Lead',
-    bio: 'Sets product direction across all six solutions, turning field needs from communities and partners into clear roadmaps.',
+    role: 'Chief Executive Officer',
+    bio: 'Leads Odylytics’ vision and strategy, building partnerships that bring our solutions to the communities that need them.',
     photo: '/assets/team/quan-a.png',
     linkedin: null,
   },
   {
+    name: 'Nghĩa',
+    role: 'Chief Technology Officer',
+    bio: 'Leads our technology and shared AI core, designing the models that turn sensor and community data into timely predictions.',
+    photo: '/assets/team/nghia.png',
+    linkedin: null,
     
+  },
+  {
     name: 'Sơn',
     role: 'Product & UX Lead',
     bio: 'Designs accessible, human-centred experiences so every solution stays simple to use, even in a crisis.',
     photo: '/assets/team/son.png',
-    linkedin: null,
-  },
-  {
-    name: 'Nghĩa',
-    role: 'AI Lead',
-    bio: 'Leads our shared AI core, designing the models that turn sensor and community data into timely predictions.',
-    photo: '/assets/team/nghia.png',
     linkedin: null,
   },
   {
