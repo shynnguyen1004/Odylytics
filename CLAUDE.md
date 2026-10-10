@@ -54,6 +54,8 @@ Production assets live under `public/assets/` and are referenced with root-relat
 - `brand/odylytics-wordmark.svg` — light-background variant, kept for later use.
 - `brand/odylytics-symbol.svg` / `brand/odylytics-symbol-dark.svg` — symbol (black / white fills), from `OdylyticsBrand/favicon.svg` (also `public/favicon.svg`). The dark variant is used for the hero note and team photo placeholders.
 - `solutions/<name>.png` — solution logos (`aquaguard`, `airguard`, `includio`, `roomie`, `hearwork`, `enablecode`), centre-cropped and resized to 960px wide. `solutions/dark/<name>.png` holds the dark-mode variants with identical names and framing (source: `DarkMode/`, same crop); `useBrandAssets().solutionLogo(path)` swaps to them when the theme is dark.
-- Expected later: `partners/<name>.svg`, `team/<name>.jpg`, recognition issuer logos. Until then the UI renders bordered placeholder blocks at final sizes.
+- `partners/<slug>.png` — partner logos (`asu`, `rmit`, `sorbonne`, `uts`, `laval`, `dow`) from `partnerships/`: transparent padding trimmed, marks scaled to equal visual area and placed left-aligned on one 640×240 transparent canvas, so they look balanced in the 192×72 `.partner__logo` box. Reprocess new partner logos the same way.
+- `team/<name>.png` — core team photos (transparent background) from `New/`.
+- Expected later: recognition issuer logos. Until then the UI renders bordered placeholder blocks at final sizes.
 
 `OdylyticsBrand/` holds the raw brand sources and the colour palette; don't reference it from code.

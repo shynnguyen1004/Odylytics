@@ -280,14 +280,14 @@ export const PARTNERS_HEADING = {
   intro: 'We work with public bodies, researchers and companies to turn reliable data into everyday safety.',
 }
 
-// TODO(content): 6 partners — name, type, logo (expected /assets/partners/<name>.svg) and description.
+// TODO(content): one-line description of each partnership.
 export const PARTNERS: Partner[] = [
-  { name: 'Partner Name', type: 'Government', description: 'Short description of what we build together and the outcome it supports.', logo: null },
-  { name: 'Partner Name', type: 'NGO', description: 'Short description of what we build together and the outcome it supports.', logo: null },
-  { name: 'Partner Name', type: 'Academic', description: 'Short description of what we build together and the outcome it supports.', logo: null },
-  { name: 'Partner Name', type: 'Corporate', description: 'Short description of what we build together and the outcome it supports.', logo: null },
-  { name: 'Partner Name', type: 'Technology', description: 'Short description of what we build together and the outcome it supports.', logo: null },
-  { name: 'Partner Name', type: 'Partner type', description: 'Short description of what we build together and the outcome it supports.', logo: null },
+  { name: 'Arizona State University', type: 'Academic', description: 'Short description of what we build together and the outcome it supports.', logo: '/assets/partners/asu.png' },
+  { name: 'RMIT University', type: 'Academic', description: 'Short description of what we build together and the outcome it supports.', logo: '/assets/partners/rmit.png' },
+  { name: 'Sorbonne Université', type: 'Academic', description: 'Short description of what we build together and the outcome it supports.', logo: '/assets/partners/sorbonne.png' },
+  { name: 'University of Technology Sydney', type: 'Academic', description: 'Short description of what we build together and the outcome it supports.', logo: '/assets/partners/uts.png' },
+  { name: 'Université Laval', type: 'Academic', description: 'Short description of what we build together and the outcome it supports.', logo: '/assets/partners/laval.png' },
+  { name: 'Dow', type: 'Corporate', description: 'Short description of what we build together and the outcome it supports.', logo: '/assets/partners/dow.png' },
 ]
 
 // ─── 6. Testimonials ────────────────────────────────────────────────────────
