@@ -25,8 +25,8 @@ function App() {
       <Nav />
       <main id="main">
         <Hero />
-        <LogoStrip />
         <Solutions />
+        <LogoStrip />
         <Featured />
         <Recognition />
         <Partners />

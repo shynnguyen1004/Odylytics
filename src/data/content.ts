@@ -343,13 +343,44 @@ export const TEAM_HEADING = {
   intro: 'Five builders working across AI, engineering, design and community impact.',
 }
 
-// TODO(content): full names, roles, bios and LinkedIn URLs for all 5 members.
+// TODO(content): full names and LinkedIn URLs for all 5 members; confirm bios.
 export const TEAM: TeamMember[] = [
-  { name: 'Khang', role: 'Role title', bio: 'One line on expertise and focus, up to 20 words.', photo: '/assets/team/khang.png', linkedin: null },
-  { name: 'Nghĩa', role: 'Role title', bio: 'One line on expertise and focus, up to 20 words.', photo: '/assets/team/nghia.png', linkedin: null },
-  { name: 'Quân', role: 'Role title', bio: 'One line on expertise and focus, up to 20 words.', photo: '/assets/team/quan-a.png', linkedin: null },
-  { name: 'Quân', role: 'Role title', bio: 'One line on expertise and focus, up to 20 words.', photo: '/assets/team/quan-b.png', linkedin: null },
-  { name: 'Sơn', role: 'Role title', bio: 'One line on expertise and focus, up to 20 words.', photo: '/assets/team/son.png', linkedin: null },
+  {
+    name: 'Quân',
+    role: 'Product Lead',
+    bio: 'Sets product direction across all six solutions, turning field needs from communities and partners into clear roadmaps.',
+    photo: '/assets/team/quan-a.png',
+    linkedin: null,
+  },
+  {
+    
+    name: 'Sơn',
+    role: 'Product & UX Lead',
+    bio: 'Designs accessible, human-centred experiences so every solution stays simple to use, even in a crisis.',
+    photo: '/assets/team/son.png',
+    linkedin: null,
+  },
+  {
+    name: 'Nghĩa',
+    role: 'AI Lead',
+    bio: 'Leads our shared AI core, designing the models that turn sensor and community data into timely predictions.',
+    photo: '/assets/team/nghia.png',
+    linkedin: null,
+  },
+  {
+    name: 'Quân',
+    role: 'Head of Marketing',
+    bio: 'Shapes how Odylytics reaches governments, partners and communities, and tells the stories behind our impact.',
+    photo: '/assets/team/quan-b.png',
+    linkedin: null,
+  },
+  {
+    name: 'Khang',
+    role: 'Software Engineer',
+    bio: 'Builds the platforms behind our solutions, from real-time data pipelines to the dashboards responders rely on.',
+    photo: '/assets/team/khang.png',
+    linkedin: null,
+  },
 ]
 
 // ─── 8. Contact + Footer ────────────────────────────────────────────────────
