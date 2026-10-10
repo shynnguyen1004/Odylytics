@@ -88,13 +88,25 @@
   padding-top: var(--nav-h);
   overflow: hidden;
   isolation: isolate;
+  background: var(--bg);
+  color: var(--text);
 }
-.hero .aurora { z-index: -1; }
+.hero .aurora, .hero .aurora-gl { z-index: -1; }
+.aurora-gl { position: absolute; inset: 0; pointer-events: none; opacity: var(--aurora-gl-opacity); transition: opacity 400ms ease; }
+.aurora-gl canvas { display: block; width: 100%; height: 100%; }
+/* The shader's glow fills roughly the top half of its canvas; flipped and kept to the
+   lower part of the hero, it reads as a band about a third of the screen tall. Both
+   edges are feathered so the band dissolves into the hero and into the logo strip below. */
+.hero .aurora-gl {
+  top: auto; height: 62%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 32%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 32%, #000 62%, transparent 100%);
+}
 
 .hero__content {
   flex: 1;
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-  padding-block: 64px 48px;
+  padding-block: 48px 128px;
   animation: hero-in 900ms var(--ease-out) both;
 }
 
@@ -127,13 +139,14 @@
 .hero__note {
   display: inline-flex; align-items: center; gap: 10px;
   margin-top: 28px;
-  font-size: 14px; color: var(--text-faint);
+  font-size: 14px; color: var(--text-muted);
 }
 .hero__note img { width: 16px; height: 16px; opacity: 0.7; }
 
-/* Solutions marquee strip at the bottom of the hero */
-.hero__trust { position: relative; padding-block: 28px 36px; }
-.hero__trust-label { text-align: center; margin-bottom: 20px; color: var(--text-faint); font-size: 13.5px; }
+/* ─── Logo strip (solutions marquee right after the hero) ──────────────── */
+
+.logo-strip { padding-block: 56px; border-bottom: 1px solid var(--border); }
+.logo-strip__label { text-align: center; margin-bottom: 28px; color: var(--text-faint); font-size: 13.5px; }
 
 .strip-item {
   display: flex; align-items: center; justify-content: center;

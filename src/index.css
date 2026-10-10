@@ -14,7 +14,35 @@
   --neutral-100: #E4E3E5; --neutral-200: #BDBBBF; --neutral-300: #97949B;
   --neutral-400: #736F78; --neutral-500: #504D53; --neutral-600: #2F2D31; --neutral-700: #111013;
 
-  /* Semantic — dark mode (default); light overrides live in [data-theme="light"] */
+  /* Type */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Shape */
+  --radius-card: 20px;
+  --radius-chip: 14px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --nav-h: 72px;
+  --container: 1240px;
+  --pad: 32px;
+  --section-y: 128px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Semantic colours — dark (default). The hero always keeps the visitor's chosen
+   theme; the rest of the page switches to light once the hero is scrolled past
+   ([data-surface="light"], set by Hero), independent of the theme toggle. */
+:root,
+:root:not([data-theme="light"]) .hero {
   --bg: #0B0A0E;
   --surface: #141318;
   --surface-2: #1C1B21;
@@ -45,36 +73,15 @@
   --aurora-b1: var(--orange-600);
   --aurora-b2: var(--purple-700);
   --aurora-opacity: 0.5;
+  --aurora-gl-opacity: 1;
   --gradient-brand: linear-gradient(135deg, #AE0BFF 0%, #FF8C00 100%);
-
-  /* Type */
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-
-  /* Shape */
-  --radius-card: 20px;
-  --radius-chip: 14px;
-  --radius-pill: 999px;
-
-  /* Layout */
-  --nav-h: 72px;
-  --container: 1240px;
-  --pad: 32px;
-  --section-y: 128px;
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-
   color-scheme: dark;
-  font-family: var(--font-body);
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* Orange #FF8C00 fails contrast on white, so light mode uses the darker
    orange-500 for signal text; purple text steps down to purple-500 likewise. */
-:root[data-theme="light"] {
+:root[data-theme="light"],
+:root[data-surface="light"] {
   --bg: #FAFAFB;
   --surface: var(--white);
   --surface-2: #F3F2F5;
@@ -103,7 +110,47 @@
   --aurora-b1: var(--orange-200);
   --aurora-b2: var(--purple-100);
   --aurora-opacity: 0.7;
+  --aurora-gl-opacity: 0.5;
   color-scheme: light;
+}
+
+/* Colour tokens are registered so they can be transitioned: the whole page fades
+   between surfaces instead of snapping. */
+@property --bg { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --surface { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --surface-2 { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --border { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --border-strong { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --border-hover { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --wash { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --wash-strong { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --text { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --text-muted { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --text-faint { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --accent-soft { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --accent-soft-hover { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --signal { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --tag-accent-border { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --tag-accent-bg { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --tag-signal-border { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --tag-signal-bg { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --inverse-bg { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --inverse-bg-hover { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --inverse-text { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --nav-bg { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --nav-bg-scrolled { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --photo-glow { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --aurora-a { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --aurora-b1 { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --aurora-b2 { syntax: '<color>'; inherits: true; initial-value: transparent; }
+@property --aurora-opacity { syntax: '<number>'; inherits: true; initial-value: 0.5; }
+
+:root.surface-animate,
+:root.surface-animate .hero {
+  transition: --bg 700ms ease, --surface 700ms ease, --surface-2 700ms ease, --border 700ms ease, --border-strong 700ms ease, --border-hover 700ms ease, --wash 700ms ease, --wash-strong 700ms ease, --text 700ms ease, --text-muted 700ms ease, --text-faint 700ms ease, --accent-soft 700ms ease, --accent-soft-hover 700ms ease, --signal 700ms ease, --tag-accent-border 700ms ease, --tag-accent-bg 700ms ease, --tag-signal-border 700ms ease, --tag-signal-bg 700ms ease, --inverse-bg 700ms ease, --inverse-bg-hover 700ms ease, --inverse-text 700ms ease, --nav-bg 700ms ease, --nav-bg-scrolled 700ms ease, --photo-glow 700ms ease, --aurora-a 700ms ease, --aurora-b1 700ms ease, --aurora-b2 700ms ease, --aurora-opacity 700ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root.surface-animate, :root.surface-animate .hero { transition: none; }
 }
 
 @media (max-width: 820px) { :root { --pad: 20px; --section-y: 96px; } }

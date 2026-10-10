@@ -4,6 +4,7 @@ import { CloseIcon, MenuIcon } from '../components/Icons'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { NAV_ITEMS } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
+import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -22,8 +23,7 @@ export function Nav() {
   useEffect(() => {
     if (!open) return
     const toggle = toggleRef.current
-    const { overflow } = document.body.style
-    document.body.style.overflow = 'hidden'
+    lockScroll()
     menuRef.current?.querySelector<HTMLAnchorElement>('a')?.focus()
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -35,10 +35,10 @@ export function Nav() {
     window.addEventListener('keydown', onKeyDown)
     desktop.addEventListener('change', onResize)
     return () => {
-      document.body.style.overflow = overflow
+      unlockScroll()
       window.removeEventListener('keydown', onKeyDown)
       desktop.removeEventListener('change', onResize)
-      toggle?.focus()
+      toggle?.focus({ preventScroll: true })
     }
   }, [open])
 
@@ -78,7 +78,7 @@ export function Nav() {
         </div>
       </div>
 
-      <div id="mobile-menu" ref={menuRef} className="nav__menu" hidden={!open}>
+      <div id="mobile-menu" ref={menuRef} className="nav__menu" hidden={!open} data-lenis-prevent>
         <nav aria-label="Mobile">
           <ol>
             {NAV_ITEMS.map((item, index) => (

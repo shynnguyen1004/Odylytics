@@ -1,32 +1,45 @@
+import { useEffect, useRef } from 'react'
+import { Aurora } from '../components/Aurora'
 import { Button } from '../components/Button'
-import { Marquee } from '../components/Marquee'
-import { HERO, SOLUTIONS } from '../data/content'
-import type { Solution } from '../data/content'
+import { HERO } from '../data/content'
 import { useBrandAssets } from '../hooks/useBrandAssets'
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { useRotatingWord } from '../hooks/useRotatingWord'
+import { setPastHero, useTheme } from '../hooks/useTheme'
 
-function StripItem({ solution }: { solution: Solution }) {
-  const { solutionLogo } = useBrandAssets()
-  if (!solution.logo) {
-    return <span className="strip-item strip-item--placeholder">{solution.name}</span>
-  }
-  return (
-    <span className="strip-item">
-      <img src={solutionLogo(solution.logo)} alt={solution.name} loading="lazy" />
-    </span>
-  )
-}
+const AURORA_STOPS: [string, string, string] = ['#AE0BFF', '#FF8C00', '#AE0BFF']
 
 export function Hero() {
-  const brand = useBrandAssets()
+  const ref = useRef<HTMLElement>(null)
+  const brand = useBrandAssets('hero')
+  const theme = useTheme()
   const reducedMotion = usePrefersReducedMotion()
   const wordIndex = useRotatingWord(HERO.rotatingWords.length, 2500, !reducedMotion)
   const previousIndex = (wordIndex - 1 + HERO.rotatingWords.length) % HERO.rotatingWords.length
 
+  useEffect(() => {
+    const hero = ref.current
+    if (!hero) return
+    const root = document.documentElement
+    // The page turns light once the hero's bottom edge rises above mid-viewport.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setPastHero(!entry.isIntersecting && entry.boundingClientRect.top < 0)
+        // Enable the colour fade only after the first measurement so a reload mid-page doesn't animate.
+        requestAnimationFrame(() => root.classList.add('surface-animate'))
+      },
+      { rootMargin: '-50% 0px 0px 0px' },
+    )
+    observer.observe(hero)
+    return () => {
+      observer.disconnect()
+      setPastHero(false)
+    }
+  }, [])
+
   return (
-    <section id="home" className="hero" aria-labelledby="hero-title">
-      <div className="aurora" aria-hidden="true" />
+    <section id="home" ref={ref} className="hero" aria-labelledby="hero-title">
+      <Aurora colorStops={AURORA_STOPS} amplitude={1} blend={0.5} speed={0.5} lightMode={theme === 'light'} paused={reducedMotion} flip />
 
       <div className="container hero__content">
         <img className="hero__logo" src={brand.wordmark} alt="Odylytics" width="1826" height="565" />
@@ -67,19 +80,6 @@ export function Hero() {
           <img src={brand.symbol} alt="" />
           Engineering Safer Communities.
         </p>
-      </div>
-
-      <div className="hero__trust">
-        <p className="hero__trust-label">Six solutions. One AI core.</p>
-        <Marquee
-          label="Odylytics solutions"
-          renderItems={() => SOLUTIONS.map((solution) => <StripItem key={solution.id} solution={solution} />)}
-        />
-        <div className="strip-static" aria-hidden="true">
-          {SOLUTIONS.map((solution) => (
-            <StripItem key={solution.id} solution={solution} />
-          ))}
-        </div>
       </div>
     </section>
   )

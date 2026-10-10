@@ -1,11 +1,16 @@
 import { BRAND } from '../data/content'
-import { useTheme } from './useTheme'
+import { useSurface, useTheme } from './useTheme'
 
 const SOLUTIONS_DIR = '/assets/solutions/'
 
-/** Logo variants that stay legible on the current theme background. */
-export function useBrandAssets() {
-  const light = useTheme() === 'light'
+/**
+ * Logo variants that stay legible on the background behind them. The hero always
+ * follows the chosen theme; everything else follows the scroll-driven page surface.
+ */
+export function useBrandAssets(scope: 'page' | 'hero' = 'page') {
+  const theme = useTheme()
+  const surface = useSurface()
+  const light = (scope === 'hero' ? theme : surface) === 'light'
   return {
     wordmark: light ? BRAND.wordmark : BRAND.wordmarkDark,
     symbol: light ? BRAND.symbol : BRAND.symbolDark,

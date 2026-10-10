@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
+import { lockScroll, unlockScroll } from '../hooks/useSmoothScroll'
 import { CloseIcon } from './Icons'
 
 type Props = {
@@ -18,14 +19,13 @@ export function Modal({ open, onClose, labelledBy, children }: Props) {
     if (!dialog || !open) return
 
     const previouslyFocused = document.activeElement as HTMLElement | null
-    const { overflow } = document.body.style
-    document.body.style.overflow = 'hidden'
+    lockScroll()
     dialog.showModal()
 
     return () => {
       dialog.close()
-      document.body.style.overflow = overflow
-      previouslyFocused?.focus()
+      unlockScroll()
+      previouslyFocused?.focus({ preventScroll: true })
     }
   }, [open])
 
@@ -33,6 +33,7 @@ export function Modal({ open, onClose, labelledBy, children }: Props) {
     <dialog
       ref={ref}
       className="modal"
+      data-lenis-prevent
       aria-labelledby={labelledBy}
       onCancel={(event) => {
         event.preventDefault()

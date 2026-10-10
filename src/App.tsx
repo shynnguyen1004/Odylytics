@@ -1,9 +1,11 @@
 import './App.css'
 import { useReveal } from './hooks/useReveal'
+import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { Contact } from './sections/Contact'
 import { Featured } from './sections/Featured'
 import { Footer } from './sections/Footer'
 import { Hero } from './sections/Hero'
+import { LogoStrip } from './sections/LogoStrip'
 import { Nav } from './sections/Nav'
 import { Partners } from './sections/Partners'
 import { Recognition } from './sections/Recognition'
@@ -13,6 +15,7 @@ import { Testimonials } from './sections/Testimonials'
 
 function App() {
   useReveal()
+  useSmoothScroll()
 
   return (
     <>
@@ -22,6 +25,7 @@ function App() {
       <Nav />
       <main id="main">
         <Hero />
+        <LogoStrip />
         <Solutions />
         <Featured />
         <Recognition />
